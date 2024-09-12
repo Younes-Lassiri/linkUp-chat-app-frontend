@@ -1,9 +1,7 @@
 import './Signup.css';
-import { useContext, useEffect, useState } from 'react';
-import chatlogo from './chatapp_images/chat-logo.png';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { axiosClient } from '../../api/axios';
-import { UserContext } from '../../context/UserContext';
 export default function Signup() {
     const navigate = useNavigate();
     const [name, setName] = useState('');
@@ -21,10 +19,9 @@ export default function Signup() {
             console.error('Error signing up:', error.response?.data || error.message);
         }
     }
-
     return (
         <div className="signup-page">
-            <img src={chatlogo} alt='chat-logo'/>
+            <img src='https://react-laravel.infinityfreeapp.com/storage/app/public/images/20240826_141508.png' alt='chat-logo'/>
             <h4>Sign up</h4>
             <p>Get your LinkUp account now.</p>
            <form onSubmit={handle}>

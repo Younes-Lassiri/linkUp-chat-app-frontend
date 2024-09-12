@@ -1,6 +1,6 @@
 import axios from 'axios';
 export const axiosClient = axios.create({
-    baseURL: 'http://localhost:8000',
+    baseURL: 'https://react-laravel.infinityfreeapp.com',
     withCredentials: true,
     withXSRFToken: true
 });

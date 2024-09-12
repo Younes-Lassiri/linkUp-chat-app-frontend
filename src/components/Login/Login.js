@@ -2,10 +2,9 @@ import './Login.css';
 import { useContext, useEffect, useState } from 'react';
 import { axiosClient } from '../../api/axios';
 import { Link, useNavigate } from 'react-router-dom';
-import chatlogo from './chatapp_images/chat-logo.png';
 import { UserContext } from '../../context/UserContext';
 export default function Login() {
-    const { user, setUser, logged, setLogged } = useContext(UserContext);
+    const { logged, setLogged } = useContext(UserContext);
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -29,7 +28,7 @@ export default function Login() {
       },[logged])
     return (
         <div className="signup-page">
-            <img src={chatlogo} alt='chat-logo'/>
+            <img src='https://react-laravel.infinityfreeapp.com/storage/app/public/images/20240826_141508.png' alt='chat-logo'/>
             <h4>Sign in</h4>
             <p>Sign in to continue to Chatvia.</p>
            <form onSubmit={handleLogin}>

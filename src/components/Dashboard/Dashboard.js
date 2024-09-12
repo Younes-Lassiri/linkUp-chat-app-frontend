@@ -8,7 +8,6 @@ import { Howl } from 'howler';
 import sentsound from './images/sent_sound.mp3';
 import 'boxicons'
 import { useNavigate } from 'react-router-dom'
-import homepageimage from './images/chat-homepage.png';
 const formatTime = (dateString) => {
     const date = new Date(dateString);
     let hours = date.getHours();
@@ -17,7 +16,6 @@ const formatTime = (dateString) => {
     hours = hours % 12;
     hours = hours ? hours : 12;
     const minutesFormatted = minutes < 10 ? '0' + minutes : minutes;
-  
     return `${hours}:${minutesFormatted} ${ampm}`;
   };
 export default function Dashboard() {
@@ -188,16 +186,6 @@ export default function Dashboard() {
     async function getMessagesReload(friend) {
         setselectedFriend(friend);
         setActiveChat(true);
-        const element = document.querySelector('.dashboard-page-three');
-        
-        if (element) {
-            if (isMobile === 1) {
-                element.classList.remove('dashboard-page-three');
-                element.classList.add('dashboard-page-three-is-mobile');
-            }
-        } else {
-            console.warn('Element with class .dashboard-page-three not found.');
-        }
         try {
             await axiosClient.get('/sanctum/csrf-cookie');
             const response = await axiosClient.get('/api/messages', {
@@ -297,7 +285,7 @@ export default function Dashboard() {
                                             <div className="dashboard-page-two-online-users-selected-user" key={i}>
                                                 <div className='dashboard-page-two-online-users-selected-user-online-all-status'>
                                                 <img 
-                                                    src={`http://localhost:8000/${item.picture}`} 
+                                                    src={`https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${item.picture.split('/').pop()}`} 
                                                     alt={item.name} 
                                                 />
                                                 {item.state === 'online' ? (
@@ -351,14 +339,14 @@ export default function Dashboard() {
                                                     item.status === 'Available' ? (
                                                         <div className="dashboard-page-two-div-contacts-messages-item-image-chack-state-user-online-available">
                                                             <img 
-                                                                src={item.picture.startsWith('blob') ? item.picture : `http://localhost:8000/${item.picture}`} 
+                                                                src={item.picture.startsWith('blob') ? item.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${item.picture.split('/').pop()}`} 
                                                                 alt={item.name} 
                                                             />
                                                         </div>
                                                     ) : (
                                                         <div className="dashboard-page-two-div-contacts-messages-item-image-chack-state-user-online-busy">
                                                             <img 
-                                                                src={item.picture.startsWith('blob') ? item.picture : `http://localhost:8000/${item.picture}`} 
+                                                                src={item.picture.startsWith('blob') ? item.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${item.picture.split('/').pop()}`} 
                                                                 alt={item.name} 
                                                             />
                                                         </div>
@@ -366,7 +354,7 @@ export default function Dashboard() {
                                                 ) : (
                                                     <div className="dashboard-page-two-div-contacts-messages-item-image-chack-state-user-offline">
                                                         <img 
-                                                            src={item.picture.startsWith('blob') ? item.picture : `http://localhost:8000/${item.picture}`} 
+                                                            src={item.picture.startsWith('blob') ? item.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${item.picture.split('/').pop()}`} 
                                                             alt={item.name} 
                                                         />
                                                     </div>
@@ -438,7 +426,7 @@ export default function Dashboard() {
                             <div className='dashboard-profile-section-top-two'>
                                 <div className='dashboard-profile-section-top-two-image'>
                                     {
-                                        user.picture? <img src={user.picture.startsWith('blob') ? user.picture : `http://localhost:8000/${user.picture}`} alt={user.name} />: null
+                                        user.picture? <img src={user.picture.startsWith('blob') ? user.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${user.picture.split('/').pop()}`} alt={user.name} />: null
                                     }
                                 </div>
                                 <h4>{user.name}</h4>
@@ -503,7 +491,7 @@ export default function Dashboard() {
                                         <div className="dashboard-page-two-div-contacts-messages-item-image-users">
                                             <div>
                                                 {
-                                                    item.picture? <img src={item.picture.startsWith('blob') ? item.picture : `http://localhost:8000/${item.picture}`} alt={item.name} />: null
+                                                    item.picture? <img src={item.picture.startsWith('blob') ? item.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${item.picture.split('/').pop()}`} alt={item.name} />: null
                                                 }
                                             </div>
                                         </div>
@@ -553,7 +541,7 @@ export default function Dashboard() {
                         <div className='dashboard-profile-section-top-two'>
                             <div className='dashboard-profile-section-top-two-image-settings'>
                                 {
-                                    user.picture? <img src={user.picture.startsWith('blob') ? user.picture : `http://localhost:8000/${user.picture}`} alt={user.name} />: null
+                                    user.picture? <img src={user.picture.startsWith('blob') ? user.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${user.picture.split('/').pop()}`} alt={user.name} />: null
                                 }
                                 <form>
                                     <label htmlFor="upload-button">
@@ -607,7 +595,7 @@ export default function Dashboard() {
                                     <div className="dashboard-page-two-div-contacts-messages-item-image-users">
                                         <div>
                                             {
-                                                item.picture? <img src={item.picture.startsWith('blob') ? item.picture : `http://localhost:8000/${item.picture}`} alt={item.name} />: null
+                                                item.picture? <img src={item.picture.startsWith('blob') ? item.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${item.picture.split('/').pop()}`} alt={item.name} />: null
                                             }
                                         </div>
                                     </div>
@@ -662,6 +650,16 @@ export default function Dashboard() {
         selectedFunc()
     },[selected]);
     useEffect(() => {
+        const setVh = () => {
+            document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+        };
+        setVh();
+        window.addEventListener('resize', setVh);
+        return () => {
+            window.removeEventListener('resize', setVh);
+        };
+    }, []);
+    useEffect(() => {
             const fetchUsers = async () => {
                 await axiosClient.get('/sanctum/csrf-cookie');
                 const response = await axiosClient.post('/api/users',{'user': user});
@@ -677,7 +675,6 @@ export default function Dashboard() {
       if (loginLoading || Object.keys(user).length === 0) {
           return <Loader />;
       }
-    
     return (
         <div className="dashboard-page">
             <div className="dashboard-page-one">
@@ -697,7 +694,7 @@ export default function Dashboard() {
                         <li>
                             <div className='dashboard-image-profile' onClick={() => setClicked(!clicked)}>
                                 {
-                                    user.picture? <img src={user.picture.startsWith('blob') ? user.picture : `http://localhost:8000/${user.picture}`} alt={user.name} />: null
+                                    user.picture? <img src={user.picture.startsWith('blob') ? user.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${user.picture.split('/').pop()}`} alt={user.name} />: null
                                 }
                                 {
                                     clicked? (
@@ -739,7 +736,7 @@ export default function Dashboard() {
                             ) : null
                         }
                         {
-                            selectedFriend.picture? <img src={selectedFriend.picture.startsWith('blob') ? selectedFriend.picture : `http://localhost:8000/${selectedFriend.picture}`} alt={selectedFriend.name} />: null
+                            selectedFriend.picture? <img src={selectedFriend.picture.startsWith('blob') ? selectedFriend.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${selectedFriend.picture.split('/').pop()}`} alt={selectedFriend.name} />: null
                         }
                         <h4>{selectedFriend.name}</h4>
                          {selectedFriend.state === 'online' ? (
@@ -775,7 +772,7 @@ export default function Dashboard() {
                                                 </div>
                                                 <div className="dashboard-page-three-one-item-image">
                                                     {
-                                                        user.picture? <img src={user.picture.startsWith('blob') ? user.picture : `http://localhost:8000/${user.picture}`} alt={user.name} />: null
+                                                        user.picture? <img src={user.picture.startsWith('blob') ? user.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${user.picture.split('/').pop()}`} alt={user.name} />: null
                                                     }
                                                 </div>
                                                 <div className="dashboard-page-three-one-item-sender-name-connected">
@@ -788,7 +785,7 @@ export default function Dashboard() {
                                             <div className="dashboard-page-three-one-item" key={i}>
                                                 <div className="dashboard-page-three-one-item-image">
                                                     {
-                                                        selectedFriend.picture? <img src={selectedFriend.picture.startsWith('blob') ? selectedFriend.picture : `http://localhost:8000/${selectedFriend.picture}`} alt={selectedFriend.name} />: null
+                                                        selectedFriend.picture? <img src={selectedFriend.picture.startsWith('blob') ? selectedFriend.picture : `https://react-laravel.infinityfreeapp.com/chat-app/storage/app/public/images/${selectedFriend.picture.split('/').pop()}`} alt={selectedFriend.name} />: null
                                                     }
                                                 </div>
                                                 <div className="dashboard-page-three-one-item-content">
@@ -954,19 +951,13 @@ export default function Dashboard() {
                         />
                         </div>
                         <div className="dashboard-page-three-two-one-operations">
-                        <div className="dashboard-page-three-two-one-operations-send-btn-one">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="rgb(114 105 239)"><path d="M620-520q25 0 42.5-17.5T680-580q0-25-17.5-42.5T620-640q-25 0-42.5 17.5T560-580q0 25 17.5 42.5T620-520Zm-280 0q25 0 42.5-17.5T400-580q0-25-17.5-42.5T340-640q-25 0-42.5 17.5T280-580q0 25 17.5 42.5T340-520Zm140 260q68 0 123.5-38.5T684-400H276q25 63 80.5 101.5T480-260Zm0 180q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Z"/></svg>
-                        </div>
-                        <div className="dashboard-page-three-two-one-operations-send-btn-one">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="rgb(114 105 239)"><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg>
-                        </div>
                         <div className="dashboard-page-three-two-one-operations-send-btn" onClick={() => sendMessageTo(selectedFriend.id,selectedFriend.name)}><box-icon name='send' type='solid' color='#ffffff' ></box-icon></div>
                         </div>
                     </div>
                 </div>
                         </>
                     ) : <div className='dashboard-three-chat-active-false'>
-                            <img src={homepageimage} alt='homeè_page_image'/>
+                            <img src='https://react-laravel.infinityfreeapp.com/storage/app/public/images/2823236.jpg' alt='homeè_page_image'/>
                             <h1>Stay Connected, Anytime, Anywhere</h1>
                         </div>
                 }

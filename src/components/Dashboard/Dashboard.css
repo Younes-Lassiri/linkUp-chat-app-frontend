@@ -564,7 +564,8 @@
 }
 .dashboard-page-two-div-contacts-messages-item-image-chack-state-user-online-available
 {
-    width: 65%;
+    width: 45px;
+    height: 45px;
     margin: 0 auto;
     position: relative;
 }
@@ -582,7 +583,8 @@
 }
 .dashboard-page-two-div-contacts-messages-item-image-chack-state-user-online-busy
 {
-    width: 65%;
+    width: 45px;
+    height: 45px;
     margin: 0 auto;
     position: relative;
 }
@@ -601,7 +603,8 @@
 
 .dashboard-page-two-div-contacts-messages-item-image-chack-state-user-offline
 {
-    width: 65%;
+    width: 45px;
+    height: 45px;
     margin: 0 auto;
     position: relative;
 }
@@ -645,6 +648,7 @@
 .dashboard-page-two-div-contacts-messages-item-image div img
 {
     width: 90%;
+    height: 90%;
     border-radius: 50%;
 }
 .dashboard-page-two-div-contacts-messages-item-content
@@ -1124,15 +1128,6 @@
     padding: 0 25px;
 }
 
-.dashboard-page-three
-{
-    width: 100%;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 88% 12%;
-    position: relative;
-}
 @keyframes hideMessages{
     from{
         transform: translateX(0);
@@ -1148,8 +1143,8 @@
     background-color: #fff;
     position: absolute;
     top: 0;
-    border-bottom: 1px solid #e4e4e4;
     left: 0;
+    border-bottom: 1px solid #e4e4e4;
     z-index: 2;
 }
 .dashboard-page-three-fixed-navbar-one
@@ -1177,11 +1172,12 @@
 .dashboard-page-three-is-mobile
 {
     width: 100%;
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 88% 12%;
     animation: showMessages 1s alternate;
+    background-color: #fff;
 }
 @keyframes showMessages{
     from{
@@ -1198,11 +1194,11 @@
 }
 .dashboard-page-three-two-one
 {
-    width: 92%;
+    width: 96%;
     height: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 90% 10%;
 }
 .dashboard-page-three-two-one-one
 {
@@ -1248,7 +1244,7 @@
 {
     background-color: rgb(114 105 239);
     border-radius: .3rem;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1267,10 +1263,11 @@
 .dashboard-page-three
 {
     width: 100%;
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 88% 12%;
+    position: relative;
 }
 .dashboard-page-three-one
 {
@@ -1602,7 +1599,6 @@
     {
         position: fixed;
         top: 0;
-        background-color: #fff;
     }
     .dashboard-page-three-two-one
     {
@@ -1683,11 +1679,12 @@
     {
         width: 60%;
     }
-    .dashboard-page
-    {
+    .dashboard-page {
         grid-template-columns: 1fr;
-        grid-template-rows: 86% 14%;
+        grid-template-rows: 88% 12%;
+        height: calc(var(--vh, 1vh) * 100);
     }
+    
 }
 .dashboard-page-two-online-users-loading-wait
 {
